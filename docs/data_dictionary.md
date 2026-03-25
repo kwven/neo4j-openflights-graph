@@ -1,4 +1,4 @@
-##  airports file columns explanation
+##  Data Dictionary — airports_graph.csv
 
 # airport_id
 Unique OpenFlights identifier for the airport.
@@ -63,3 +63,24 @@ For our cleaned airport file, we keep only rows where type = "airport".
 Source of the airport record.
 Examples include OurAirports, Legacy, and User.
 For the higher-quality airport-only file, OpenFlights says the source is restricted to OurAirports.
+
+
+
+## Data Dictionary — routes_graph.csv
+
+- **airline_code**: 2-letter or alphanumeric airline code from OpenFlights.
+- **airline_id**: OpenFlights airline identifier, when available.
+- **source_airport**: IATA/ICAO-style source airport code from the route file.
+- **source_airport_id**: OpenFlights ID of the source airport.
+- **destination_airport**: IATA/ICAO-style destination airport code from the route file.
+- **destination_airport_id**: OpenFlights ID of the destination airport.
+- **codeshare**: `Y` if the route is marked as codeshare, otherwise null.
+- **stops**: Number of stops on the route.
+- **equipment**: Aircraft equipment codes used on the route.
+
+### Cleaning notes
+- Converted `\N` to null.
+- Removed rows with missing source or destination airport IDs.
+- Removed rows whose airports were not found in the cleaned airport table.
+- Removed self-loop routes where source and destination were the same airport.
+- Created `routes_graph.csv` as the graph-ready subset for direct routes.

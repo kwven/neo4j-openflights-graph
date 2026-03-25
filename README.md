@@ -100,7 +100,7 @@ This query identifies the most connected airports in the graph by total route de
 **Main insight:**  
 The graph highlights major global hubs such as ATL, ORD, PEK, LHR, CDG, FRA, LAX, DFW, JFK, and AMS.
 
-![Top 10 Airport Hubs](docs/screenshots/Top-10-airport-hubs.png)
+![Top 10 Airport Hubs](docs/screenshots/Top-10-airport-hub.png)
 
 ---
 

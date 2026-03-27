@@ -162,3 +162,36 @@ RETURN a.name AS airport,
        count(DISTINCT b.country) AS destination_countries
 ORDER BY destination_countries DESC
 LIMIT 10;
+
+
+// -----------------------------------------------------
+// 15) Top compagnies par nombre de routes
+// -----------------------------------------------------
+MATCH (a:Airline)-[:OPERATES]->(r:Route)
+RETURN a.name AS airline,
+       a.iata AS iata,
+       a.country AS country,
+       count(r) AS total_routes
+ORDER BY total_routes DESC
+LIMIT 10;
+
+// -----------------------------------------------------
+// 16) Compagnies qui desservent le plus de pays de destination
+// -----------------------------------------------------
+
+MATCH (a:Airline)-[:OPERATES]->(r:Route)-[:TO]->(dst:Airport)
+RETURN a.name AS airline,
+       count(DISTINCT dst.country) AS destination_countries
+ORDER BY destination_countries DESC
+LIMIT 10;
+
+// -----------------------------------------------------
+// 17) Routes opérées par une compagnie donnée
+// -----------------------------------------------------
+
+MATCH (a:Airline {iata: "AF"})-[:OPERATES]->(r:Route)-[:FROM]->(src:Airport)
+MATCH (r)-[:TO]->(dst:Airport)
+RETURN src.name AS source,
+       dst.name AS destination,
+       r.equipment AS equipment
+LIMIT 20;

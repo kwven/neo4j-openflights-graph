@@ -6,6 +6,35 @@ A graph analysis project built with **Neo4j** using the **OpenFlights** dataset 
 
 This project models a global air transport network as a graph in Neo4j.
 
+The project was built in two stages:
+
+### Version 1
+A simple air network model:
+- **nodes**: `Airport`
+- **relationships**: `ROUTE_TO`
+
+This version supports analysis such as:
+- major airport hubs
+- domestic vs international routes
+- airport connectivity
+- shortest paths
+
+### Version 2
+An extended model with airlines:
+- **nodes**: `Airline`
+- **nodes**: `Route`
+- new relationships:
+  - `(:Airline)-[:OPERATES]->(:Route)`
+  - `(:Route)-[:FROM]->(:Airport)`
+  - `(:Route)-[:TO]->(:Airport)`
+
+This version supports analysis such as:
+- airlines operating the most routes
+- airlines with the widest international coverage
+- airlines operating from a given airport
+- a more detailed structure of the air transport network
+
+---
 - **Nodes** represent airports
 - **Relationships** represent direct routes between airports
 

@@ -8,18 +8,6 @@ This project models a global air transport network as a graph in Neo4j.
 
 The project was built in two stages:
 
-### Version 1
-A simple air network model:
-- **nodes**: `Airport`
-- **relationships**: `ROUTE_TO`
-
-This version supports analysis such as:
-- major airport hubs
-- domestic vs international routes
-- airport connectivity
-- shortest paths
-
-### Version 2
 An extended model with airlines:
 - **nodes**: `Airline`
 - **nodes**: `Route`
@@ -47,10 +35,6 @@ The goal is to use graph modeling and Cypher queries to explore:
 - route network structure
 - and more insightful analyses
 
-### Files used
-
-- `airports.dat`
-- `routes.dat`
 
 ### Final cleaned files
 
@@ -87,37 +71,7 @@ For `routes.dat`:
 - removed exact duplicate rows
 - created `routes_graph.csv` as the graph-ready route file
 
-## Data Dictionary
 
-this is the data dictionary for the Neo4j OpenFlights Graph project.
-
-## Project Structure
-
-```text
-neo4j-openflights-graph/
-├─ README.md
-├─ data/
-│  ├─ raw/
-│  │  ├─ airports.dat
-│  │  └─ routes.dat
-│  └─ clean/
-│     ├─ airports_clean.csv
-│     ├─ airports_graph.csv
-│     ├─ routes_clean.csv
-│     └─ routes_graph.csv
-├─ cypher/
-│  ├─ 01_constraints.cypher
-│  ├─ 02_import_airports.cypher
-│  ├─ 03_import_routes.cypher
-│  └─ 04_queries.cypher
-├─ scripts/
-│  ├─ clean_airports.py
-│  ├─ clean_routes.py
-│  ├─ airport_graph_clean.py
-|  └─ clean_airlines.py
-└─ docs/
-   └─ screenshots/
-```
 ## Analysis Results
 
 This section shows example results generated from the Neo4j graph after importing the cleaned OpenFlights airport and route data.
